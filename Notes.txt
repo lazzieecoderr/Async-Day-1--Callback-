@@ -1,0 +1,73 @@
+Callback
+What's the callback? - call stack, web API, event loop, queue
+Use & its purpose of the callback
+Pain of callback => callback hell scenario
+Session reference  - http://latentflip.com/loupe/
+
+single threaded:- It executes single task at a time.
+synchronous:- It will execute all the code line by line in the order which it is written.
+Asynchronous:- It will do the task without waiting for a task to complete its execution.
+
+Callback:- It is a function/methods which uses one more function as a parameter.
+Example:- MRF , addEventListener, settimeout
+arr.map(()=>{
+
+})
+div.addEventListener("click",()=>{
+
+})
+//callback using settimeout
+
+console.log("first");
+console.log("second");
+console.log("app is started");
+setTimeout(()=>console.log("......loading"),5000)
+setTimeout(()=>console.log("app completed"),8000)
+console.log("building the app");
+
+//call back using function
+const complete=()=>{
+    console.log("finish");
+}
+const add =(a)=>{
+      var x = 2;
+      var y=3;
+      a();
+      console.log("sum",x+y);
+      
+}
+add(complete)
+
+//callback using function and settimeout
+
+console.log("food is ordered in swiggy");
+function getfood(callback){
+    setTimeout(()=>{
+        const food = '🍔';
+        callback(food)
+    },3000)
+}
+function foodready(food){
+ console.log(`food is ready ${food}`);
+ }
+
+ getfood(foodready)
+ console.log("doing other works until food is ready");
+----------------------------------------------------
+//CallStack :- 
+=>It is a place where it keeps track of the function 
+that has to be called inside the program.
+=>It will execute whaterver statements inside the program.
+
+//WebApi:-
+=> It is the place where Asynchronous operations are actually executed.
+
+//Queue:-
+=>Queue is a data structure (FIFO) 
+=>It stores all the async function which has to be executed next.
+
+//EventLoop:- 
+=> It is between callstack and Queue
+=> the main role of the event loop is to check whether callstack is empty or not.
+=>If it is empty it will push the code from queue and pass it to callstack
+=>then the callstack executes it.
